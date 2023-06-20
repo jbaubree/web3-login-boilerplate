@@ -15,6 +15,7 @@
     "dev:codegen": "pnpm codegen --watch \"backend/src/typeDefs/**/*.ts\"",
     "dev:front": "cd frontend && nr dev",
     "lint": "eslint frontend --max-warnings 0 && eslint backend",
+    "lint-fix": "eslint frontend --max-warnings 0 --fix && eslint backend --fix",
     "postinstall": "npx simple-git-hooks",
     "test": "cd frontend && pnpm test",
     "test:ci": "cd frontend && pnpm test:ci",
