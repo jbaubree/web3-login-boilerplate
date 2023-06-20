@@ -1,0 +1,16 @@
+{
+  "extends": ["../tsconfig.json"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": [
+      "vitest",
+      "vite/client",
+      "vite-plugin-vue-layouts/client"
+    ],
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
+  "exclude": ["dist", "node_modules"]
+}

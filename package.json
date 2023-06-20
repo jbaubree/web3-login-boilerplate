@@ -1,0 +1,51 @@
+{
+  "name": "web3-login-boilerplate",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@8.6.1",
+  "main": "backend/src/app.ts",
+  "scripts": {
+    "build": "pnpm clean && pnpm codegen && pnpm typecheck && pnpm build:back && pnpm build:front",
+    "build:front": "cd frontend && pnpm build",
+    "build:back": "cd backend && pnpm build",
+    "clean": "rimraf dist && rimraf backend/dist && rimraf frontend/dist",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:back": "nodemon --ignore ./frontend --ignore ./shared backend/src/app",
+    "dev:codegen": "pnpm codegen --watch \"backend/src/typeDefs/**/*.ts\"",
+    "dev:front": "cd frontend && nr dev",
+    "lint": "eslint frontend --max-warnings 0 && eslint backend",
+    "postinstall": "npx simple-git-hooks",
+    "test": "cd frontend && pnpm test",
+    "test:ci": "cd frontend && pnpm test:ci",
+    "test:coverage": "cd frontend && pnpm coverage",
+    "typecheck": "vue-tsc --noEmit --project frontend && npx tsc --noEmit --project backend",
+    "up": "taze major -r -I"
+  },
+  "dependencies": {
+    "graphql": "^16.6.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.39.5",
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.4",
+    "@babel/preset-typescript": "^7.21.5",
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
+    "@graphql-codegen/cli": "^4.0.1",
+    "@graphql-codegen/typescript": "^4.0.0",
+    "@graphql-codegen/typescript-resolvers": "^4.0.0",
+    "eslint": "^8.42.0",
+    "nodemon": "^2.0.22",
+    "npm-run-all": "^4.1.5",
+    "pnpm": "^8.6.1",
+    "rimraf": "^5.0.1",
+    "simple-git-hooks": "^2.8.1",
+    "taze": "^0.10.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3",
+    "unocss": "^0.53.1",
+    "vue-tsc": "^1.6.5"
+  }
+}
